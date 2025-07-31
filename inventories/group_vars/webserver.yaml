@@ -1,0 +1,6 @@
+---
+paquete: httpd
+service: httpd
+servicio_firewall:
+  - http
+  - https

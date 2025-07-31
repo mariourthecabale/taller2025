@@ -7,12 +7,12 @@
   
   - name: El paquete httpd tiene que estar instalado
     ansible.builtin.dnf:
-      name: httpd
+      name: "{{ paquete }}"
       state: present 
 
   - name: El servicio httpd iniciado y habilitado
     ansible.builtin.systemd_service:
-      name: httpd
+      name: "{{ service  }}"
       enabled: true
       state: started
   
@@ -22,9 +22,7 @@
       state: enabled
       permanent: true
       immediate: true
-    loop:
-        - http
-        - https      
+    loop: "{{ servicio_firewall  }}"      
 
   - name: Archivo indice customizado
     ansible.builtin.template:
